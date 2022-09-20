@@ -21,6 +21,7 @@ content = {
     "age": "22"
 }
 
+# get info on calories... from user workout input
 exercise_response = requests.post(url=f"{NUTRITIONIX_ENDPOINT}/v2/natural/exercise",
                                   headers=nutritionix_header,
                                   json=content)
@@ -42,6 +43,7 @@ today = datetime.now()
 date = today.strftime("%d/%m/%Y")
 time = today.strftime("%X")
 
+# post the data to google sheet for each one returned from Nutrionix
 for workout in exercise_data:
     sheety_content = {
         "workout": {  # put all the data inside the sheet name (aka: the last part of the url endPoint with no "s")
